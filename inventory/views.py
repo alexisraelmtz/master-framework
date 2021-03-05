@@ -1,9 +1,13 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from .models import Product
 
 
 def myView(request):
-    return HttpResponse("Hello, World!")
+    # Product.objects.all() / .filter() / .get() / .save()
+    products = Product.objects.all()
+    # return HttpResponse("Hello, World!")
+    return render(request, "index.html", {"products": products})
 
 
 def newView(request):
