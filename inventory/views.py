@@ -5,8 +5,8 @@ from .models import Product
 
 def myView(request):
     # Product.objects.all() / .filter() / .get() / .save()
-    products = Product.objects.all()
     # return HttpResponse("Hello, World!")
+    products = Product.objects.all()
     return render(request, "index.html", {"products": products})
 
 

@@ -1,27 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <h1>Houses</h1>
-<h2></h2>
-<h2>Hello, World!</h2>
+<h2>Hello, World!!!</h2>
 <div class="row">
-    {% for item in products %}
-    <!-- <div class="col"> -->
-    <div class="card mb-3" style="max-width: 540px;">
-        <div class="row no-gutters">
-            <div class="col-md-4">
-                <img src="{% {{item.image}} %}" class="card-img" alt="Not Found">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">{{ item.title }}</h5>
-                    <p class="card-text">{{ item.description }}</p>
-                    <p class="card-text"><small class="text-muted"> $ {{item.price}} MXN.</small></p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
+    {% for product in products %}
+    <div class="col">
+
+        <div class="card" style="width: 18rem;">
+            <img src="{{product.image.url}}" width="120" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">{{product.name}}</h5>
+                <p class="card-text">{{product.description}}</p>
+                <a href="#" class="btn btn-primary">$ {{product.price}} MXN.</a>
             </div>
         </div>
-        <!-- </div> -->
-        {% endfor %}
+
     </div>
-    {% endblock %}
+    {% endfor %}
+</div>
+{% endblock %}
