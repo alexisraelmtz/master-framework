@@ -8,7 +8,7 @@ class users(models.Model):
 
 
 class home(models.Model):
-    # uid = models.
+    # hid = models.
     # board = models.
     # title= models.
     pass
@@ -17,14 +17,16 @@ class home(models.Model):
 class board(models.Model):
     # bid = models.
     # column = models.
-    # title = models.
+    # sub_title = models.
+    # date = models.
     pass
 
 
 class column(models.Model):
-    # cid = models
-    # data = models
     # date = models
+    # cid = models
+    # ticket_name = models
+    # position = models
     pass
 
 
