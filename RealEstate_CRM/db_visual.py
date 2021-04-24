@@ -1,8 +1,13 @@
 import sqlite3
+import os
+from pathlib import Path
 
 
 # conn = sqlite3.connect(":memory:")
-conn = sqlite3.connect(r"/mnt/c/Users/7K/Documents/Python/master-framework/db.sqlite3")
+default = Path(os.getcwd())
+def_db = Path.joinpath(default, "master-framework/RealEstate_CRM/db.sqlite3")
+# print(def_db)
+conn = sqlite3.connect(def_db)
 c = conn.cursor()
 
 
@@ -46,8 +51,9 @@ def remove_emp(emp):
 
 
 def all():
-    c.execute("SELECT * FROM product")
-    return c.fetchall()
+    with conn:
+        c.execute("SELECT * FROM inventory_product")
+        return c.fetchall()
 
 
 print(all())

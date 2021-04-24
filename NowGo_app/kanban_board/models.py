@@ -12,7 +12,7 @@ maxUsers = 100
 
 
 class user(models.Model):
-    uid = models.IntegerField(
+    id = models.IntegerField(
         max_length=maxUsers,
         # auto_increment=True,
         primary_key=True,
@@ -24,26 +24,26 @@ class user(models.Model):
 
 
 class board(models.Model):
-    bid = models.IntegerField(
+    id = models.IntegerField(
         # auto_increment=True,
         primary_key=True,
         unique=True,
         max_length=maxBoards * maxUsers,
     )
-    uid = models.IntegerField(max_length=maxUsers)
+    user_id = models.IntegerField(max_length=maxUsers)
     title = models.CharField(max_length=225)
     date = models.DateTimeField(datetime.datetime.now(tz=None))
     style = models.IntegerField(max_length=100)
 
 
 class column(models.Model):
-    cid = models.IntegerField(
+    id = models.IntegerField(
         # auto_increment=True,
         primary_key=True,
         unique=True,
         max_length=maxColumns * maxBoards * maxUsers,
     )
-    bid = models.IntegerField(max_length=maxBoards * maxUsers)
+    board_id = models.IntegerField(max_length=maxBoards * maxUsers)
     name = models.CharField(max_length=125)
     date = models.DateTimeField(datetime.datetime.now(tz=None))
     position = models.IntegerField(max_length=600)
@@ -51,13 +51,13 @@ class column(models.Model):
 
 
 class ticket(models.Model):
-    tid = models.IntegerField(
+    id = models.IntegerField(
         # auto_increment=True,
         primary_key=True,
         unique=True,
         max_length=maxTickets,
     )
-    cid = models.IntegerField(max_length=maxColumns * maxBoards * maxUsers)
+    id = models.IntegerField(max_length=maxColumns * maxBoards * maxUsers)
     name = models.CharField(max_length=255)
     text = models.TextField(max_length=750)
     priority = models.IntegerField(max_length=5)
@@ -70,5 +70,5 @@ class ticket(models.Model):
     #         auto_increment=True, primary_key=True, unique=True, max_length=maxUsers
     #     )
     #
-    #     bid = models.IntegerField(max_length=maxBoards)
+    #     board_id = models.IntegerField(max_length=maxBoards)
     #     title = models.CharField(max_length=225)
